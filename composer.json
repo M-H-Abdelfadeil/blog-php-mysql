@@ -1,0 +1,6 @@
+{
+    "require": {
+        "mahmoud-abdelfadeil/validator-filter-php": "^1.1",
+        "dcblogdev/pdo-wrapper": "^2.0"
+    }
+}

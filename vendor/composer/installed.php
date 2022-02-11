@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '1000b225eafae7ce26a14e4a1dfb8ffdce3c4979',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '1000b225eafae7ce26a14e4a1dfb8ffdce3c4979',
+            'dev_requirement' => false,
+        ),
+        'dcblogdev/pdo-wrapper' => array(
+            'pretty_version' => 'v2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../dcblogdev/pdo-wrapper',
+            'aliases' => array(),
+            'reference' => '6c048b1838858d3d825b75f11b98d13b6cf43eee',
+            'dev_requirement' => false,
+        ),
+        'mahmoud-abdelfadeil/validator-filter-php' => array(
+            'pretty_version' => 'v1.1',
+            'version' => '1.1.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mahmoud-abdelfadeil/validator-filter-php',
+            'aliases' => array(),
+            'reference' => '438a9a56a05bf0d6219166bda2196ce9785bd0f5',
+            'dev_requirement' => false,
+        ),
+    ),
+);
