@@ -13,7 +13,7 @@ return [
     // config language message 
     // ar - en 
 
-    "lang"=>'ar'
+    "lang"=>'en'
 
 
 

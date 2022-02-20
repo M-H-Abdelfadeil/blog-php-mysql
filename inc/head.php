@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../public/css/magnific-popup.css">
 	
 	<link rel="stylesheet" href="../public/css/flaticon.css">
+	<link rel="stylesheet" href="../public/css/notify.css">
 	<link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>

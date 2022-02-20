@@ -1,14 +1,14 @@
 <?php
 
-echo dirname(__FILE__);
-exit;
+// echo dirname(__FILE__);
+// exit;
 session_start();
 
 include 'inc/app.php'; 
 
-if(isset($_SESSION['user'])){
-    redirect("../users/profile.php");
-}
+// if(isset($_SESSION['user'])){
+//     redirect("../users/profile.php");
+// }
 
 use App\Controllers\Web\AuthController;
  

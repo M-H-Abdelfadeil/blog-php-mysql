@@ -87,6 +87,7 @@
 		<script src="../public/js/jquery.animateNumber.min.js"></script>
 		<script src="../public/js/scrollax.min.js"></script>
 		<script src="../public/js/google-map.js"></script>
+		<script src="../public/js/notify.js"></script>
 		<script src="../public/js/main.js"></script>
 		
 	</body>

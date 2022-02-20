@@ -2,6 +2,9 @@
 namespace ValidatorFilterPHP\Validator;
 trait Database{
     public function db(){
+
+        
+        
         $config=$this->config_DB();
 
         $db_host        =$config['db_host'];
@@ -73,7 +76,11 @@ trait Database{
     }
 
     private function config_DB(){
-     $file_config="../config/validator-filter-config.php";
+
+    $ds=DIRECTORY_SEPARATOR;
+    $removeChars="vendor".$ds."mahmoud-abdelfadeil".$ds."validator-filter-php".$ds."src".$ds."Validator";
+    $root= str_replace($removeChars,"",dirname(__FILE__)) ;    
+     $file_config= $root."config/validator-filter-config.php";
       if(!file_exists($file_config)){
             if(!is_dir($_SERVER['DOCUMENT_ROOT'].'/config')){
                 mkdir($_SERVER['DOCUMENT_ROOT'].'/config');

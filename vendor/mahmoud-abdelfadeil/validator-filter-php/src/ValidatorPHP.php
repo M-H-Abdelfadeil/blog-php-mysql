@@ -12,7 +12,12 @@ class ValidatorPHP{
     private $errors=[];
 
     public function __construct(){
-        $config_file='../config/validator-filter-config.php';
+
+        $ds=DIRECTORY_SEPARATOR;
+        $removeChars="vendor".$ds."mahmoud-abdelfadeil".$ds."validator-filter-php".$ds."src";
+        $root= str_replace($removeChars,"",dirname(__FILE__)) ;    
+
+        $config_file=$root.'config/validator-filter-config.php';
         if(file_exists($config_file)){
             $config=include $config_file;
             if(isset($config['lang'])){
