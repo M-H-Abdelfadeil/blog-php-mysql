@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'ValidatorFilterPHP\\' => array($vendorDir . '/mahmoud-abdelfadeil/validator-filter-php/src'),
     'Dcblogdev\\PdoWrapper\\' => array($vendorDir . '/dcblogdev/pdo-wrapper/src'),
+    'App\\' => array($baseDir . '/app'),
 );

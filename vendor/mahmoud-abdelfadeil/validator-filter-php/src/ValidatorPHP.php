@@ -12,7 +12,7 @@ class ValidatorPHP{
     private $errors=[];
 
     public function __construct(){
-        $config_file=$_SERVER["DOCUMENT_ROOT"].'/config/validator-filter-config.php';
+        $config_file='../config/validator-filter-config.php';
         if(file_exists($config_file)){
             $config=include $config_file;
             if(isset($config['lang'])){
@@ -22,7 +22,10 @@ class ValidatorPHP{
                     $this->lang=include 'Validator/lang/en.php'; 
                 }
             }
+        }else{
+            $this->lang=include 'Validator/lang/en.php'; 
         }
+
     }
     
     public function Validator($rule){

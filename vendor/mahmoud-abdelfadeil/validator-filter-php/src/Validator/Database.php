@@ -16,7 +16,7 @@ trait Database{
                     \PDO::ATTR_DEFAULT_FETCH_MODE=>\PDO::FETCH_ASSOC
                 ));
             return $conn;
-        } catch(PDOException $e) {
+        } catch(\PDOException $e) {
             echo "Connection Error Database: " . $e->getMessage();
             exit();
         }
@@ -73,7 +73,7 @@ trait Database{
     }
 
     private function config_DB(){
-     $file_config=$_SERVER['DOCUMENT_ROOT']."/config/validator-filter-config.php";
+     $file_config="../config/validator-filter-config.php";
       if(!file_exists($file_config)){
             if(!is_dir($_SERVER['DOCUMENT_ROOT'].'/config')){
                 mkdir($_SERVER['DOCUMENT_ROOT'].'/config');

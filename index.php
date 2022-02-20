@@ -95,3 +95,7 @@ include 'inc/head.php';
 		<div class="degree-left-footer"></div>
 	</section>		
 <?php include 'inc/footer.php' ?>
+
+<?php
+
+

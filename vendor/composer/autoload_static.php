@@ -6,6 +6,11 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit2019b37d70e814d78445181e85700db9
 {
+    public static $files = array (
+        'ef37c23e070fb19294c4aa65c971aec3' => __DIR__ . '/../..' . '/app/Helpers/helper.php',
+        '7b6da17ee52fc1de63821b4ffee602db' => __DIR__ . '/../..' . '/config/app.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'V' => 
         array (
@@ -14,6 +19,10 @@ class ComposerStaticInit2019b37d70e814d78445181e85700db9
         'D' => 
         array (
             'Dcblogdev\\PdoWrapper\\' => 21,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -25,6 +34,10 @@ class ComposerStaticInit2019b37d70e814d78445181e85700db9
         'Dcblogdev\\PdoWrapper\\' => 
         array (
             0 => __DIR__ . '/..' . '/dcblogdev/pdo-wrapper/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
         ),
     );
 

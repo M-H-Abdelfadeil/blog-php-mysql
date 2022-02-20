@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '1000b225eafae7ce26a14e4a1dfb8ffdce3c4979',
+        'reference' => '9aa0d0d572ab152e23ff593cf7953d51098a5b55',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '1000b225eafae7ce26a14e4a1dfb8ffdce3c4979',
+            'reference' => '9aa0d0d572ab152e23ff593cf7953d51098a5b55',
             'dev_requirement' => false,
         ),
         'dcblogdev/pdo-wrapper' => array(
