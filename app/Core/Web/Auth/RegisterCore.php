@@ -36,7 +36,7 @@ class RegisterCore extends Core implements InterfaceCore{
 
 
         // save user 
-        return $this->save($_POST);
+        return $this->save();
         
     }
 

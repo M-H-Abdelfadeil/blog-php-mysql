@@ -19,3 +19,10 @@ function randomString($length = 20){
     
     return substr($randomString , 1 , $length);
 }
+
+function deleteOldImagePost($image){
+    $link = '../uploads/posts/images/'.$image;
+    if(file_exists($link)){
+        unlink($link);
+    }
+}

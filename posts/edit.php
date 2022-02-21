@@ -1,25 +1,40 @@
 <?php
 session_start();
 
-
+if(!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])){
+    die ('An unexpected error occurred');
+}
 include '../inc/app.php';
+
 use App\Controllers\Web\PostController;
-//  include design files 
-include '../inc/head.php';
-include '../inc/navbar.php';
+
+
+
 
 if (!isset($_SESSION['user'])) {
     redirect("../auth/login.php");
 }
+
+$post = new PostController;
+$getPost =$post->show($_GET['post_id']);
+if(!$getPost){
+    die ('An unexpected error occurred');
+}
+//  include design files 
+include '../inc/head.php';
+include '../inc/navbar.php';
+
 $succes=false;
+
+$imgUpdate=false;
 if(isset($_POST['submit'])){
-    $post = new PostController;
-    $create=$post->create();
-    if(!$create['status']){
-        $errors= $create['data'];
+    
+    $update=$post->update($_GET['post_id']);
+    if(!$update['status']){
+        $errors= $update['data'];
     }else{
-        $success=$create['msg'];
-        unset($_REQUEST);
+        $success=$update['msg'];
+        $imgUpdate=$update['image'];
     }
 }
 
@@ -43,12 +58,12 @@ if(isset($_POST['submit'])){
                         </a>
                     </span>
                     <span class="mr-2">
-                        <a href="#">Create
+                        <a href="#">Edit Post
                             <i class="fa fa-chevron-right"></i>
                         </a>
                     </span>
                 </p>
-                <h1 class="mb-3 bread">Create Post</h1>
+                <h1 class="mb-3 bread">Edit Post</h1>
             </div>
         </div>
     </div>
@@ -58,7 +73,7 @@ if(isset($_POST['submit'])){
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <span class="subheading">Create Post</span>
+                <span class="subheading">Edit Post</span>
             </div>
         </div>
 
@@ -68,7 +83,7 @@ if(isset($_POST['submit'])){
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input name="title" value="<?php old('title') ?>" type="text" class="form-control  is-invalid" placeholder="Title">
+                                <input name="title" value="<?php old('title',$getPost['title']) ?>" type="text" class="form-control  is-invalid" placeholder="Title">
                                 <div class="invalid-feedback">
                                     <?php echo isset($errors['title']) ? $errors['title'] : '';?>
                                 </div>
@@ -76,7 +91,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                               <textarea name="description" id="" cols="30" rows="7" class="form-control is-invalid" placeholder="Description"><?php old('description') ?></textarea>
+                               <textarea name="description" id="" cols="30" rows="7" class="form-control is-invalid" placeholder="Description"><?php old('description',$getPost['description']) ?></textarea>
                                 <div class="invalid-feedback">
                                     <?php echo isset($errors['description']) ? $errors['description'] : '';?>
                                 </div>
@@ -87,11 +102,11 @@ if(isset($_POST['submit'])){
                         <div class="col-md-12">
                             <div class="form-group">
                                <label class="btn btn-success" for="image">
-                                   Select Image
+                                   Edit Image
                                    <i class="fa fa-picture-o"></i>
                                 </label><br>
                                 <div class="img-box border border-primary rounded d-inline-block">
-                                     <img id="" class="d-none" src="#" alt="your image" />
+                                     <img id="" width="400" height="400"  class="" src="<?php echo $imgUpdate ? '../uploads/posts/images/'.$imgUpdate : '../uploads/posts/images/'.$getPost['image'] ?>" alt="your image" />
                                 </div>
                                 
                                 <div class="text-danger">
@@ -102,7 +117,7 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <input image name="submit" type="submit" value="SAVE" class="btn btn-primary py-3 px-5">
+                                <input image name="submit" type="submit" value="EDIT" class="btn btn-primary py-3 px-5">
                             </div>
                         </div>
                        
@@ -133,9 +148,29 @@ include '../inc/footer.php';
             reader.readAsDataURL(input.files[0]);
         }
         }
+
+        let notifier = new AWN({
+            position : "top-right",
+            durations :{
+                global: 3000,
+            }
+        });
 </script>
 ?>
-
 <?php
-include '../app/Helpers/messages.php';
+if($success){
+    ?>
+        <script>
+            notifier.success("<?php echo $success ?>")
+        </script>
+    <?php
+}
+if(isset($errors)){
+    
+    ?>
+    <script>
+        notifier.alert("<?php echo end($errors) ?>")
+    </script>
+<?php
+}
  
