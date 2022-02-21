@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * 
+ */
 function old($value,$defualt=false){
     if(isset($_REQUEST[$value])){
         echo $_REQUEST[$value];
@@ -26,3 +28,4 @@ function deleteOldImagePost($image){
         unlink($link);
     }
 }
+
