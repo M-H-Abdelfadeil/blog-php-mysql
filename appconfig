@@ -1,5 +1,6 @@
 #!/usr/bin/env php
 <?php
+$file = fopen("config/app.php","w");
 $text ="
 <?php
 // datebase 
@@ -11,3 +12,5 @@ define('DB_PASS','');               //  database password
 
 fwrite($file, $text);
 fclose($file);
+
+echo "created file config/app.php";
