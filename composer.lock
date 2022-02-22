@@ -4,50 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbc41259a153951f2fa999f83bbd5147",
+    "content-hash": "40dc7e1290e1bc863ade5a0c7880e47a",
     "packages": [
-        {
-            "name": "dcblogdev/pdo-wrapper",
-            "version": "v2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dcblogdev/pdo-wrapper.git",
-                "reference": "6c048b1838858d3d825b75f11b98d13b6cf43eee"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dcblogdev/pdo-wrapper/zipball/6c048b1838858d3d825b75f11b98d13b6cf43eee",
-                "reference": "6c048b1838858d3d825b75f11b98d13b6cf43eee",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dcblogdev\\PdoWrapper\\": "/src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Carr",
-                    "email": "dave@dcblog.dev",
-                    "homepage": "https://dcblog.dev",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A crud wrapper for PDO",
-            "support": {
-                "issues": "https://github.com/dcblogdev/pdo-wrapper/issues",
-                "source": "https://github.com/dcblogdev/pdo-wrapper/tree/v2.0.1"
-            },
-            "time": "2020-04-19T23:52:33+00:00"
-        },
         {
             "name": "mahmoud-abdelfadeil/validator-filter-php",
             "version": "v1.1",

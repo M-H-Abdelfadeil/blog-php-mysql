@@ -6,7 +6,13 @@ use App\Models\AuthModel;
 
 class RegisterCore extends Core implements InterfaceCore{
 
- 
+     /**
+     * function register You run the data verification function,
+     * the validate function, and the user data register function
+     * 
+     * @return array  
+     * 
+     */
     
     public function register(){
         
@@ -40,7 +46,12 @@ class RegisterCore extends Core implements InterfaceCore{
         
     }
 
-
+    /**
+     * Terms of data I need 
+     * 
+     * @return array
+     * 
+     */
 
     public function rules(){
         return [
@@ -51,17 +62,35 @@ class RegisterCore extends Core implements InterfaceCore{
         ];
     }
 
+     /**
+     * Ensure that the data is entered correctly
+     * 
+     * @return array
+     * 
+     */
     public function validate(){
         $this->validate->Validator($this->rules());
         return $this->validate->has_error_validate();
     }
 
+    /**
+     * request required
+     * 
+     * @return array
+     * 
+     */
     public function required(){
         return [
             'name','email','password','re_password'
         ];
     }
 
+    /**
+     * register data
+     * 
+     * @return array
+     * 
+     */
     private function save(){
         // filter inputs use package validate filter 
 
@@ -80,10 +109,23 @@ class RegisterCore extends Core implements InterfaceCore{
         ];
     }
 
+     /**
+     * Authentication Model 
+     * 
+     * @return \App\Models\AuthModel
+     * 
+     */
     private function model(){
         return new AuthModel;
     }
 
+
+     /**
+     *  cahek  confirm Password 
+     * 
+     * @return bool
+     * 
+     */
     private function confirmPassword(){
         if($_POST['password']!=$_POST['re_password']){
             return false;

@@ -49,7 +49,7 @@ $data  = $post->index();
 								<div class="blog-entry justify-content-end">
 									<div class="text">
 										<h3 class="heading mb-3"><a href="../posts/show.php?post_id=<?php echo $post['post_id'];  ?>"><?php echo $post['title']; ?></a></h3>
-										<a href="../posts/show.php?post_id=<?php echo $post['post_id'];  ?>" class="block-20 img" style="background-image: url(../uploads/posts//images/<?php echo $post['image']; ?>)">
+										<a href="../posts/show.php?post_id=<?php echo $post['post_id'];  ?>" class="block-20 img" style="background-image: url(../uploads/posts/images/<?php echo $post['image']; ?>)">
 										</a>
 										<?php
 											if(isset($_SESSION['user']) && $_SESSION['user']['id']==$post['user_id']){

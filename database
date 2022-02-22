@@ -1,0 +1,74 @@
+#!/usr/bin/env php
+<?php
+use App\Models\Database;
+
+include 'config/app.php';
+include 'app/Models/Database.php';
+
+$db = new Database;
+$stm="DROP TABLE posts";
+$sql=$db->conn->prepare($stm);
+$sql->execute(); 
+$stm="DROP TABLE users";
+$sql=$db->conn->prepare($stm);
+$sql->execute(); 
+
+$stm="
+CREATE TABLE users(
+	id INT   NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    name	 VARCHAR(255) NOT NULL , 
+    email 	 VARCHAR(255) NOT NULL , 
+    password VARCHAR(255) NOT NULL 
+);
+
+";
+$sql=$db->conn->prepare($stm);
+$sql->execute();    
+
+$stm="
+CREATE TABLE posts(
+	id 	 INT   NOT NULL AUTO_INCREMENT PRIMARY KEY , 
+    title	 VARCHAR(255) NOT NULL , 
+    description LONGTEXT NOT NULL ,
+    image VARCHAR(255) NOT NULL ,
+    user_id INT   NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+";
+$sql=$db->conn->prepare($stm);
+$sql->execute();
+
+for($i=1 ; $i<=6;$i++){
+    $password=password_hash(11221122,PASSWORD_DEFAULT);
+    $name ="user - " . $i  ;
+    $email= "user".$i."@test.test" ;
+
+    $stm="INSERT INTO users  (name , email ,  password) VALUES (:name , :email , :password)";
+    $sql=$db->conn->prepare($stm);
+    $sql->bindParam(':name'     ,      $name     ,PDO::PARAM_STR);
+    $sql->bindParam(':email'    ,  $email  , PDO::PARAM_STR);
+    $sql->bindParam(':password' ,  $password                ,PDO::PARAM_STR);
+    $sql->execute();    
+}
+
+for($i=1 ; $i<=6;$i++){
+    $img=$i.".jpg";
+    $title = "post - " .$i ;
+    $description = description();
+    $user_id = rand(1,6) ;
+    $stm = "INSERT INTO posts (title ,  description , image , user_id ) VALUES (:title , :description , :image , :user_id)";
+    $sql= $db->conn->prepare($stm);
+    $sql->bindParam(':title'        ,   $title     ,PDO::PARAM_STR);
+    $sql->bindParam(':description'  , $description  ,PDO::PARAM_STR);
+    $sql->bindParam(':image'        ,$img         ,PDO::PARAM_STR);
+    $sql->bindParam(':user_id'      ,$user_id      ,PDO::PARAM_STR);
+    $sql->execute();
+}
+
+function description(){
+    return "
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+    ";
+}
+
+echo "success";

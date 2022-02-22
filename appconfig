@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+$text ="
+<?php
+// datebase 
+define('DB_HOST','localhost');       // database host 
+define('DB_NAME','blog_php_mysql'); //  database name
+define('DB_USER','root');           //  database username
+define('DB_PASS','');               //  database password
+";
+
+fwrite($file, $text);
+fclose($file);

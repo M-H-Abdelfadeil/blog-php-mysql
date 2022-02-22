@@ -43,14 +43,19 @@ include '../inc/navbar.php';
 
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-6 col-md-4 mt-2">
             <div>
-                <a href="#" class="btn btn-primary">EDIT <i class="fa fa-edit"></i></a>
+                <a href="edit.php" class="btn btn-primary">EDIT <i class="fa fa-edit"></i></a>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-6 col-md-4 mt-2 ">
             <div>
-                <a href="#" class="btn btn-primary">EDIT PASSWORD <i class="fa fa-edit"></i></a>
+                <a href="edit-password.php" class="btn btn-primary">EDIT PASSWORD <i class="fa fa-edit"></i></a>
+            </div>
+        </div>
+        <div class="col-6 col-md-4 mt-2">
+            <div>
+                <a href="../posts/create.php" class="btn btn-primary">CREATE POST <i class="fa fa-plus"></i></a>
             </div>
         </div>
     </div>
@@ -73,7 +78,7 @@ include '../inc/navbar.php';
                     <div class="blog-entry justify-content-end">
                         <div class="text">
                             <h3 class="heading mb-3"><a href="../posts/show.php?post_id=<?php echo $post['id'];  ?>"><?php echo $post['title']; ?></a></h3>
-                            <a href="../posts/show.php?post_id=<?php echo $post['id'];  ?>" class="block-20 img" style="background-image: url(../uploads/posts//images/<?php echo $post['image']; ?>)">
+                            <a href="../posts/show.php?post_id=<?php echo $post['id'];  ?>" class="block-20 img" style="background-image: url(../uploads/posts/images/<?php echo $post['image']; ?>)">
                             </a>
                             <div class="meta mb-3">
                                 <!-- <div><a href="#">June 01, 2020</a></div> -->

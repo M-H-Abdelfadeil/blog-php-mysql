@@ -7,6 +7,13 @@ use App\Models\PostModel;
 
 class CreatePostCore extends Core implements InterfaceCore{
 
+    /**
+     * function create post  You run the data verification function,
+     * the validate function, and the user data verification function and upload image
+     * 
+     * @return array
+     * 
+     */
 
     public function create(){
         // check data
@@ -42,6 +49,13 @@ class CreatePostCore extends Core implements InterfaceCore{
 
     }
 
+
+     /**
+     * Terms of data I need 
+     * 
+     * @return array
+     * 
+     */
     public function rules()
     {
         return [
@@ -50,17 +64,36 @@ class CreatePostCore extends Core implements InterfaceCore{
         ];  
     }
 
+    /**
+     * Ensure that the data is entered correctly
+     * 
+     * @return array
+     * 
+     */
     public function validate()
     {
         $this->validate->Validator($this->rules());
         return $this->validate->has_error_validate();
     }
 
+    /**
+     * request required
+     * 
+     * @return array
+     * 
+     */
     public function required()
     {
         return ['title','description'];
     }
 
+
+    /**
+     * register data post
+     * 
+     * @return array
+     * 
+     */
     private function save($imgName){
         $title = $this->filter->string($_POST['title']);
         $description=$this->filter->string($_POST['description']);
@@ -73,6 +106,13 @@ class CreatePostCore extends Core implements InterfaceCore{
         ];
     }
 
+
+     /**
+     * Post Model 
+     * 
+     * @return \App\Models\PostModel
+     * 
+     */
     private function model(){
         return new PostModel;
     }

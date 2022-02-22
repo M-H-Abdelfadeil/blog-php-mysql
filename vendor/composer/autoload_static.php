@@ -16,10 +16,6 @@ class ComposerStaticInit2019b37d70e814d78445181e85700db9
         array (
             'ValidatorFilterPHP\\' => 19,
         ),
-        'D' => 
-        array (
-            'Dcblogdev\\PdoWrapper\\' => 21,
-        ),
         'A' => 
         array (
             'App\\' => 4,
@@ -30,10 +26,6 @@ class ComposerStaticInit2019b37d70e814d78445181e85700db9
         'ValidatorFilterPHP\\' => 
         array (
             0 => __DIR__ . '/..' . '/mahmoud-abdelfadeil/validator-filter-php/src',
-        ),
-        'Dcblogdev\\PdoWrapper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dcblogdev/pdo-wrapper/src',
         ),
         'App\\' => 
         array (
