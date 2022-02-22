@@ -16,7 +16,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 $post = new PostController;
-$getPost =$post->show($_GET['post_id']);
+$getPost =$post->showToUser($_GET['post_id']);
 if(!$getPost){
     die ('An unexpected error occurred');
 }

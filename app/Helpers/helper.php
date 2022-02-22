@@ -29,3 +29,10 @@ function deleteOldImagePost($image){
     }
 }
 
+function minString( $string ,$length = 30){
+    if(mb_strlen($string,'utf-8')>$length){
+        return mb_substr($string,0,$length)."...";
+    }else{
+        return $string;
+    }
+}

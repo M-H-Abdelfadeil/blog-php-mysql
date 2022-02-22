@@ -18,11 +18,27 @@ class PostModel extends Model{
     }
 
 
-    public function show(int $postId , int $userId){
+    public function showToUser(int $postId , int $userId){
         $stm="SELECT title , description , image FROM posts WHERE id=:post_id and user_id=:user_id";
         $sql=$this->db->conn->prepare($stm);
         $sql->bindParam(':post_id',$postId,PDO::PARAM_INT);
         $sql->bindParam(':user_id',$userId,PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetch();
+    }
+
+
+    public function show(int $postId){
+        $stm="
+        SELECT 
+            posts.id as post_id , title , SUBSTRING(description,1,100) as description , image , user_id , users.name
+        FROM posts 
+        JOIN users 
+            ON posts.user_id = users.id 
+        WHERE   posts.id = :post_id
+        ";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->bindParam(':post_id',$postId,PDO::PARAM_INT);
         $sql->execute();
         return $sql->fetch();
     }
@@ -39,6 +55,52 @@ class PostModel extends Model{
         }
     }
 
+
+    public function recent(){
+        $stm="
+            SELECT 
+                posts.id as post_id , title , SUBSTRING(description,1,100) as description , image , user_id , users.name
+            FROM posts 
+            JOIN users 
+                ON posts.user_id = users.id 
+            ORDER BY posts.id DESC LIMIT 4
+        ";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
+    public function postsUser($userId){
+        $stm="SELECT 
+            id , title ,  SUBSTRING(description,1,100) as description , image 
+        FROM posts WHERE  user_id=:user_id";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->bindParam(':user_id',$userId,PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
+
+    public function getUser($userId){
+        $stm="SELECT name FROM users WHERE  id=:user_id";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->bindParam(':user_id',$userId,PDO::PARAM_INT);
+        $sql->execute();
+        return $sql->fetch();
+    }
+
+    public function delete($postId,$userId){
+        deleteOldImagePost($this->getOldImage($postId));// delete old image
+        
+        $stm="DELETE FROM posts where id = :id and user_id=:user_id";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->bindParam(':user_id',$userId,PDO::PARAM_INT);
+        $sql->bindParam(':id',$postId,PDO::PARAM_INT);
+        $sql->execute();
+    }
+
+
+
     private function updateImage($postId,$image){
 
         deleteOldImagePost($this->getOldImage($postId));// delete old image
@@ -50,6 +112,19 @@ class PostModel extends Model{
         $sql->execute();
     }
 
+    public function index(){
+        $stm="
+            SELECT 
+                posts.id as post_id , title , SUBSTRING(description,1,100) as description , image , user_id , users.name
+            FROM posts 
+            JOIN users 
+                ON posts.user_id = users.id 
+            ORDER BY posts.id DESC
+        ";
+        $sql=$this->db->conn->prepare($stm);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
     private function getOldImage($postId){
         $stm="SELECT image FROM posts WHERE id=:post_id";
         $sql=$this->db->conn->prepare($stm);
