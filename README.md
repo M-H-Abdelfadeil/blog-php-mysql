@@ -5,7 +5,7 @@
 # BLOG
 
 CRUD POST and Auth (OOP PHP , MySQL)
-### [https://blog.spacetravel-edu.com](https://blog.spacetravel-edu.com/app/)
+### [https://blog.spacetravel-edu.com](https://blog.spacetravel-edu.com)
 ## install
 
 - run command " **php appconfig** "  ( create file config/app.php )
