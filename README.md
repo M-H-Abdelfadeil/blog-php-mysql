@@ -1,11 +1,11 @@
-<p align="center"><img src="public/images/logo.png" width="80"></p>
+<p align="center"><img src="public/images/logo.png" width="400"></p>
 
 
 
 # BLOG
 
 CRUD POST and Auth (OOP PHP , MySQL)
-
+### [https://blog.spacetravel-edu.com](https://blog.spacetravel-edu.com/app/)
 ## install
 
 - run command " **php appconfig** "  ( create file config/app.php )
