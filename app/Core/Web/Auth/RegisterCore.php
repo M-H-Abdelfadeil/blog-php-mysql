@@ -102,7 +102,7 @@ class RegisterCore extends Core implements InterfaceCore{
         return [
             'status'=>true,
             'data'=>[
-                'user_id'=>$id,
+                'id'=>$id,
                 'email'=>$_POST['email'],
                 'name'=>$_POST['name']
             ]

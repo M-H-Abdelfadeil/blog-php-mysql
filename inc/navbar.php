@@ -13,8 +13,9 @@
 					<?php
 						if(isset($_SESSION['user']['id'])){
 							?>
-								<li class="nav-item"><a href="../posts/craete.php" class="nav-link">Craete</a></li>
+								<li class="nav-item"><a href="../posts/create.php" class="nav-link">Create</a></li>
 								<li class="nav-item"><a href="../users/profile.php" class="nav-link">Profile</a></li>
+								<li class="nav-item"><a href="../auth/logout.php" class="nav-link">Logout</a></li>
 							<?php
 						}else{
 							?>
